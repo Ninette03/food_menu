@@ -44,7 +44,10 @@ class _FoodFilterScreenState extends State<FoodFilterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Food Filter Demo'),
+        title: const Text('Food Filter Demo',
+        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -60,12 +63,12 @@ class _FoodFilterScreenState extends State<FoodFilterScreen> {
             
             // Wrap widget demonstration
             Wrap(
-              spacing: 8.0, // Horizontal space between chips
-              runSpacing: 8.0, // Vertical space between lines
-              alignment: WrapAlignment.start, // Alignment of chips
+              spacing: 12.0, // Horizontal space between chips
+              runSpacing: 4.0, // Vertical space between lines
+              alignment: WrapAlignment.center, // Alignment of chips
               children: _allFilters.map((filter) {
                 return FilterChip(
-                  label: Text(filter), // Text displayed in the chip
+                  label: Text(filter, style: TextStyle(fontSize: 16),), // Text displayed in the chip
                   selected: _selectedFilters.contains(filter),
                   selectedColor: Colors.green[100], // Background color when selected
                   backgroundColor: Colors.grey[200], // Default background color
@@ -97,7 +100,7 @@ class _FoodFilterScreenState extends State<FoodFilterScreen> {
               runSpacing: 8.0,
               children: _selectedFilters.map((filter) {
                 return Chip(
-                  label: Text(filter), // Text displayed in the chip
+                  label: Text(filter, style: TextStyle(fontSize: 16),), // Text displayed in the chip
                   backgroundColor: Colors.green[100], // Background color
                   deleteIcon: const Icon(Icons.close, size: 18), // Delete icon
                   onDeleted: () { // Callback when delete is pressed
@@ -115,8 +118,10 @@ class _FoodFilterScreenState extends State<FoodFilterScreen> {
             Expanded(
               child: ListView(
                 children: _getFilteredFoodItems().map((item) => ListTile(
-                  title: Text(item['name']!),
-                  subtitle: Text(item['description']!),
+                  title: Text(item['name']!, 
+                  style: TextStyle(fontSize: 20),),
+                  subtitle: Text(item['description']!,
+                  style: TextStyle(fontSize: 16),),
                 )).toList(),
               ),
             ),
